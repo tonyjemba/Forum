@@ -1,19 +1,19 @@
 <template>
-  <HelloWorld />
-  <page-home/>
+  <div class="container">
+    <page-home />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import PageHome from '@/components/PageHome.vue';
+import HelloWorld from "./components/HelloWorld.vue";
+import PageHome from "@/components/PageHome.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld,
-    PageHome
-  }
-}
+    PageHome,
+  },
+};
 </script>
 
 <style>
