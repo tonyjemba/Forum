@@ -41,7 +41,7 @@ const routes = [
 ];
 // creating vue router
 export default createRouter({
-  //  Provide the history implementation to use. We are using the hash history for simplicity here.
+  //  Provide the history implementation to use. 
   history: createWebHistory(),
   routes, // short for `routes: routes`
 });

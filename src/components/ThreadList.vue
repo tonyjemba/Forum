@@ -51,9 +51,11 @@ export default {
     };
   },
   methods: {
+    //method that finds a post by id
     postById(postId) {
       return this.posts.find((post) => post.id === postId);
     },
+    //method that finds a user by id
     userById(userId) {
       return this.users.find((user) => user.id === userId);
     },
