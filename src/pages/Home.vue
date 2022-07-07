@@ -19,6 +19,7 @@ export default {
 };
 </script>
 
+<!-- scoped makes the css styles to only apply to this file -->
 <style scoped>
 .post-list {
     margin-top: 20px;
