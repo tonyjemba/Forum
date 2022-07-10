@@ -3,6 +3,23 @@
     <h1>{{ thread.title }}</h1>
 
     <post-list :posts="threadPosts" />
+    <div class="col-full">
+      <form>
+        <div class="form-group">
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            class="form-input"
+            v-model="newPostText"
+          ></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn-blue">Submit Post</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 <script>
@@ -17,13 +34,14 @@ export default {
       type: String,
     },
   },
-  components:{
-    PostList
+  components: {
+    PostList,
   },
   data() {
     return {
       threads: data.threads,
       posts: data.posts,
+      newPostText: ""
     };
   },
   computed: {
@@ -34,6 +52,15 @@ export default {
       return this.posts.filter((post) => post.threadId === this.id);
     },
   },
+  methods:{
+    addPost(){
+      const post = {
+        text : this.newPostText,
+        publishedAt : Math.floor(Date.now() / 1000),
+        threadId : this.id,
+        userId : "ALXhxjwgY9PinwNGHpfai6OWyDu2"
+      }
+    }
+  }
 };
 </script>
-

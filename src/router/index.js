@@ -18,7 +18,7 @@ const routes = [
       const threadexists = dataSource.threads.find(
         (thread) => thread.id === to.params.id
       );
-      //if exists continue
+      //if exists continue 
       if (threadexists) {
         next();
       } else {
@@ -27,7 +27,7 @@ const routes = [
           //path remains the same
           params: { pathMatch: to.path.substring(1).split("/") },
           //preserving the existing query and hash
-          querr: to.query,
+          query: to.query,
           hash: to.hash,
         });
       }
