@@ -3,28 +3,13 @@
     <h1>{{ thread.title }}</h1>
 
     <post-list :posts="threadPosts" />
-    <div class="col-full">
-      <form>
-        <div class="form-group">
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            class="form-input"
-            v-model="newPostText"
-          ></textarea>
-        </div>
-        <div class="form-actions">
-          <button class="btn-blue">Submit Post</button>
-        </div>
-      </form>
-    </div>
+    <post-editor @save-post="addPost" />
   </div>
 </template>
 <script>
 import data from "@/data.json";
 import PostList from "@/components/PostList.vue";
+import PostEditor from "../components/PostEditor.vue";
 
 export default {
   name: "ThreadShow",
@@ -36,14 +21,16 @@ export default {
   },
   components: {
     PostList,
+    PostEditor,
   },
   data() {
     return {
       threads: data.threads,
       posts: data.posts,
-      newPostText: ""
+      newPostText: "",
     };
   },
+  
   computed: {
     thread() {
       return this.threads.find((thread) => thread.id === this.id); //can be accesed with this.$route.params.id
@@ -52,15 +39,19 @@ export default {
       return this.posts.filter((post) => post.threadId === this.id);
     },
   },
-  methods:{
-    addPost(){
+   methods:{
+    addPost(eventdata){
       const post = {
-        text : this.newPostText,
-        publishedAt : Math.floor(Date.now() / 1000),
-        threadId : this.id,
-        userId : "ALXhxjwgY9PinwNGHpfai6OWyDu2"
+       ...eventdata.post,
+        threadId : this.id
       }
+        this.posts.push(post);
+        this.threads.posts.push(post.threadId);
+
+        console.log(post);
+      this.newPostText = ""
     }
   }
+
 };
 </script>
