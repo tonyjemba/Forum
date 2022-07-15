@@ -27,7 +27,6 @@ export default {
     return {
       threads: data.threads,
       posts: data.posts,
-      newPostText: "",
     };
   },
   
@@ -46,10 +45,8 @@ export default {
         threadId : this.id
       }
         this.posts.push(post);
-        this.threads.posts.push(post.threadId);
+        this.thread.posts.push(post.id);
 
-        console.log(post);
-      this.newPostText = ""
     }
   }
 
