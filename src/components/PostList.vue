@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="post-date text-faded">
+      <div class="post-date text-faded" :title="humandate(post.publishedAt)">
         {{   diffForHumand(post.publishedAt) }}
       </div>
     </div>
@@ -35,8 +35,10 @@
 import data from "@/data.json";
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import localisedDate from 'dayjs/plugin/localizedFormat'
 
 dayjs.extend(relativeTime);
+dayjs.extend(localisedDate);
 
 export default {
   props: {
@@ -57,6 +59,9 @@ export default {
     },
     diffForHumand(timestamp){
       return dayjs.unix(timestamp).fromNow()
+    },
+    humandate(timestamp){
+      return dayjs.unix(timestamp).format('llll')
     }
   }, 
 };
