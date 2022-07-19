@@ -30,7 +30,6 @@
 </template>
 <script>
 import data from "@/data.json";
-import AppDate from "./AppDate.vue";
 
 export default {
   props: {
@@ -39,9 +38,7 @@ export default {
       type: Array,
     },
   },
-  components: {
-    AppDate,
-  },
+  
   data() {
     return {
       users: data.users,

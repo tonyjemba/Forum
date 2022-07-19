@@ -36,16 +36,12 @@
 </template>
 <script>
 import data from "@/data.json";
-import AppDate from "./AppDate.vue";
 export default {
     props:{
         threads :{
             type:Array,
             required : true
         }
-    },
-    components:{
-      AppDate
     },
   data() {
     return {
