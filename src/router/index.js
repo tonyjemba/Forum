@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/pages/Home.vue";
 import ThreadShow from "@/pages/ThreadShow.vue";
 import NotFound from "@/pages/NotFound.vue";
-import Forum from "../pages/Forum.vue"
+import Forum from "../pages/Forum.vue";
 import dataSource from "@/data.json";
 
 //defining routes
@@ -19,7 +19,7 @@ const routes = [
       const threadexists = dataSource.threads.find(
         (thread) => thread.id === to.params.id
       );
-      //if exists continue 
+      //if exists continue
       if (threadexists) {
         next();
       } else {
@@ -35,10 +35,10 @@ const routes = [
     },
   },
   {
-    path:"/forum/:id",
+    path: "/forum/:id",
     name: "forum",
     component: Forum,
-    props: true // to be able to work with parameters as props
+    props: true, // to be able to work with parameters as props
   },
   {
     path: "/:pathMatch(.*)*",
@@ -48,7 +48,7 @@ const routes = [
 ];
 // creating vue router
 export default createRouter({
-  //  Provide the history implementation to use. 
+  //  Provide the history implementation to use.
   history: createWebHistory(),
   routes, // short for `routes: routes`
 });

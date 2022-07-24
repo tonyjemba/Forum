@@ -29,7 +29,7 @@ export default {
       posts: data.posts,
     };
   },
-  
+
   computed: {
     thread() {
       return this.threads.find((thread) => thread.id === this.id); //can be accesed with this.$route.params.id
@@ -38,17 +38,15 @@ export default {
       return this.posts.filter((post) => post.threadId === this.id);
     },
   },
-   methods:{
-    addPost(eventdata){
+  methods: {
+    addPost(eventdata) {
       const post = {
-       ...eventdata.post,
-        threadId : this.id
-      }
-        this.posts.push(post);
-        this.thread.posts.push(post.id);
-
-    }
-  }
-
+        ...eventdata.post,
+        threadId: this.id,
+      };
+      this.posts.push(post);
+      this.thread.posts.push(post.id);
+    },
+  },
 };
 </script>

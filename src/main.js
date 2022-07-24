@@ -15,7 +15,7 @@ requireComponent.keys().forEach(function (fileName) {
       .replace(/^.+\//, '')
       .replace(/\.\w+$/, '')
   )
-  app.component(baseComponentName, baseComponentConfig)
+  app.component(baseComponentName, baseComponentConfig);
 })
 
 app.mount("#app");

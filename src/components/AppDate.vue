@@ -21,6 +21,7 @@ export default {
   },
   methods: {
     diffForHumand() {
+      //using day js to format time
       return dayjs.unix(this.timestamp).fromNow();
     },
     humandate() {

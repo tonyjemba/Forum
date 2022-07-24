@@ -6,11 +6,14 @@
       <div v-for="thread in threads" :key="thread.id" class="thread">
         <div>
           <p>
-            <router-link :to="{name:'ThreadShow', params:{id:thread.id}}">{{ thread.title }}</router-link>
+            <router-link
+              :to="{ name: 'ThreadShow', params: { id: thread.id } }"
+              >{{ thread.title }}</router-link
+            >
           </p>
           <p class="text-faded text-xsmall">
             By <a href="#">{{ userById(thread.userId).name }}</a
-            >, <AppDate :timestamp="thread.publishedAt"/>.
+            >, <AppDate :timestamp="thread.publishedAt" />.
           </p>
         </div>
 
@@ -27,7 +30,9 @@
             <p class="text-xsmall">
               <a href="# ">{{ userById(thread.userId).name }}</a>
             </p>
-            <p class="text-xsmall text-faded"><AppDate :timestamp="thread.publishedAt"/></p>
+            <p class="text-xsmall text-faded">
+              <AppDate :timestamp="thread.publishedAt" />
+            </p>
           </div>
         </div>
       </div>
@@ -37,12 +42,12 @@
 <script>
 import data from "@/data.json";
 export default {
-    props:{
-        threads :{
-            type:Array,
-            required : true
-        }
+  props: {
+    threads: {
+      type: Array,
+      required: true,
     },
+  },
   data() {
     return {
       posts: data.posts,
