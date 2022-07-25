@@ -2,7 +2,7 @@
   <div class="col-full">
     <div class="forum-list">
       <h2 class="list-title">
-        <a href="category.html">Forums</a>
+        <a href="category.html">{{ categoryName }}</a>
       </h2>
 
       <div class="forum-listing" v-for="forum in forums" :key="forum.id">
@@ -37,6 +37,10 @@ export default {
       required: true,
       type: Array,
     },
+    categoryName:{
+      type: String,
+      default: "Forums"
+    }
   },
   methods: {
     showthreads: (threads) => {
