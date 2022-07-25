@@ -1,14 +1,3 @@
-<script>
-export default {
-  props: {
-    forums: {
-      required: true,
-      type: Array,
-    },
-  },
-};
-</script>
-
 <template>
   <div class="col-full">
     <div class="forum-list">
@@ -16,8 +5,7 @@ export default {
         <a href="category.html">Forums</a>
       </h2>
 
-
-      <div  class="forum-listing" v-for="forum in forums" :key="forum.id">
+      <div class="forum-listing" v-for="forum in forums" :key="forum.id">
         <div class="forum-details">
           <router-link
             :to="{ name: 'Forum', params: { id: forum.id } }"
@@ -30,8 +18,10 @@ export default {
 
         <div class="threads-count">
           <p>
-            <span class="count">{{ forum.threads?forum.threads.length:0 }}</span
-            >{{forum.threads && forum.threads.lenght > 1 ? "threads" : "thread" }}
+            <span class="count">{{
+              forum.threads ? forum.threads.length : 0
+            }}</span>
+            {{ showthreads(forum.threads) }}
           </p>
         </div>
 
@@ -40,4 +30,24 @@ export default {
     </div>
   </div>
 </template>
-
+<script>
+export default {
+  props: {
+    forums: {
+      required: true,
+      type: Array,
+    },
+  },
+  methods: {
+    showthreads: (threads) => {
+      if (threads && threads.length > 1) {
+        return "threads";
+      } else if (threads && threads.length === 1) {
+        return "thread";
+      } else {
+        return "no thread";
+      }
+    },
+  },
+};
+</script>
