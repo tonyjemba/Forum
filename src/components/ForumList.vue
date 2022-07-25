@@ -1,3 +1,14 @@
+<script>
+export default {
+  props: {
+    forums: {
+      required: true,
+      type: Array,
+    },
+  },
+};
+</script>
+
 <template>
   <div class="col-full">
     <div class="forum-list">
@@ -5,7 +16,8 @@
         <a href="category.html">Forums</a>
       </h2>
 
-      <div class="forum-listing" v-for="forum in forums" :key="forum.id">
+
+      <div  class="forum-listing" v-for="forum in forums" :key="forum.id">
         <div class="forum-details">
           <router-link
             :to="{ name: 'Forum', params: { id: forum.id } }"
@@ -18,8 +30,8 @@
 
         <div class="threads-count">
           <p>
-            <span class="count">{{ forum.threads?.length }}</span
-            >{{ forum.threads?.lenght > 1 ? "threads" : "thread" }}
+            <span class="count">{{ forum.threads?forum.threads.length:0 }}</span
+            >{{forum.threads && forum.threads.lenght > 1 ? "threads" : "thread" }}
           </p>
         </div>
 
@@ -28,13 +40,4 @@
     </div>
   </div>
 </template>
-<script>
-export default {
-  props: {
-    forums: {
-      required: true,
-      type: Array,
-    },
-  },
-};
-</script>
+

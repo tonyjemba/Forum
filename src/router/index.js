@@ -36,7 +36,7 @@ const routes = [
   },
   {
     path: "/forum/:id",
-    name: "forum",
+    name: "Forum",
     component: Forum,
     props: true, // to be able to work with parameters as props
   },

@@ -1,10 +1,10 @@
 <template>
   <h1>Welcome to the Forum</h1>
-  <forum-list />
+ <forum-list :forums="forums"/>
 </template>
 <script>
 import data from "@/data.json";
-import ForumList from "@/components/ForumList.vue";
+import ForumList from "../components/ForumList.vue";
 
 export default {
   components: {
