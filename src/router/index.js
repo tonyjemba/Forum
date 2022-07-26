@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/pages/Home.vue";
 import ThreadShow from "@/pages/ThreadShow.vue";
 import NotFound from "@/pages/NotFound.vue";
+import Category from "@/pages/Category.vue"
 import Forum from "../pages/Forum.vue";
 import dataSource from "@/data.json";
 
@@ -33,6 +34,12 @@ const routes = [
         });
       }
     },
+  },
+  {
+    path:"/category/:id",
+    name:"Category",
+    component:Category,
+    props: true
   },
   {
     path: "/forum/:id",

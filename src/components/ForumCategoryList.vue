@@ -4,6 +4,7 @@ v-for="category in categories"
 :key="category.id"
 :forums="getForumsForCategory(category)"
 :categoryName="category.name"
+:categoryID="category.id"
 />
 </template>
 <script>
@@ -21,7 +22,7 @@ export default{
     },
     methods: {
         getForumsForCategory(category){
-         return   data.forums.filter(forum => forum.id === category.id)
+         return   data.forums.filter(forum => forum.categoryId === category.id)
         }
     },
 }
