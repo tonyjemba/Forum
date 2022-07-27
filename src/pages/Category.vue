@@ -1,13 +1,12 @@
 <template>
-<h1>category.name</h1>
+<h1>{{ category.name }}</h1>
   <forum-list
-    :categoryName="category.name"
     :forums="getForumsForCategory(category)"
+    :categoryName="category.name"
   />
 </template>
 <script>
 import ForumList from "../components/ForumList.vue";
-import data from "@/data.json";
 export default {
   props: {
     id: {
@@ -20,12 +19,12 @@ export default {
   },
   computed: {
     category() {
-      return data.categories.find((category) => category.id === this.id);
+      return this.$store.state.categories.find((category) => category.id === this.id);
     },
   },
   methods: {
     getForumsForCategory(category) {
-      return data.forums.filter((forum) => forum.categoryId === category.id);
+      return this.$store.state.forums.filter((forum) => forum.categoryId === category.id);
     },
   },
 };

@@ -15,7 +15,6 @@
 </template>
 <script>
 import ThreadList from "../components/ThreadList.vue";
-import data from "@/data.json";
 
 export default {
   components: {
@@ -29,10 +28,10 @@ export default {
   },
   computed: {
     forum() {
-      return data.forums.find(forum => forum.id === this.id);
+      return this.$store.state.forums.find(forum => forum.id === this.id);
     },
     threads(){
-        return data.threads.filter(thread => thread.forumId === this.id);
+        return this.$store.state.threads.filter(thread => thread.forumId === this.id);
     }
   },
 };

@@ -9,7 +9,6 @@ v-for="category in categories"
 </template>
 <script>
 import ForumList from './ForumList.vue';
-import data from "@/data.json";
 export default{
     components:{
         ForumList
@@ -22,7 +21,7 @@ export default{
     },
     methods: {
         getForumsForCategory(category){
-         return   data.forums.filter(forum => forum.categoryId === category.id)
+         return   this.$store.state.forums.filter(forum => forum.categoryId === category.id)
         }
     },
 }

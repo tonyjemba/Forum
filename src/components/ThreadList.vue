@@ -40,7 +40,6 @@
   </div>
 </template>
 <script>
-import data from "@/data.json";
 export default {
   props: {
     threads: {
@@ -48,11 +47,14 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      posts: data.posts,
-      users: data.users,
-    };
+
+  computed: {
+    posts() {
+      return this.$store.state.posts;
+    },
+    users() {
+      return this.$store.state.users;
+    },
   },
   methods: {
     //method that finds a post by id

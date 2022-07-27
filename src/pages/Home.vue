@@ -3,18 +3,17 @@
  <forum-category-list :categories ="categories"/>
 </template>
 <script>
-import data from "@/data.json";
 import ForumCategoryList from "../components/ForumCategoryList.vue";
 
 export default {
   components: {
     ForumCategoryList
   },
-  data() {
-    return {
-      categories: data.categories,
-    };
-  },
+  computed:{
+    categories(){
+      return this.$store.state.categories;
+    }
+  }
 };
 </script>
 
