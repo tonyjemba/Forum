@@ -27,9 +27,8 @@ export default {
   },
   methods: {
     post() {
-      const postID = 1234;
+      
       const post = {
-        id: postID,
         text: this.formText,
         publishedAt: Math.floor(Date.now() / 1000),
         userId: "ALXhxjwgY9PinwNGHpfai6OWyDu2",
