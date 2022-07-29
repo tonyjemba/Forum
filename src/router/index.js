@@ -5,10 +5,12 @@ import NotFound from "@/pages/NotFound.vue";
 import Category from "@/pages/Category.vue"
 import Forum from "../pages/Forum.vue";
 import dataSource from "@/data.json";
+import Profile from '../pages/Profile.vue'
 
 //defining routes
 const routes = [
   { path: "/", name: "Home", component: Home },
+  { path: "/myprofile", name: "Profile", component: Profile },
   {
     path: "/thread/:id",
     name: "ThreadShow",
