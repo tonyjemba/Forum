@@ -2,36 +2,8 @@
   <div class="container">
     <div class="flex-grid">
       <div class="col-3 push-top">
-        <div class="profile-card">
-          <p class="text-center">
-            <img
-              :src="user.avatar"
-              :alt="`${user.name} profile picture`"
-              class="avatar-xlarge"
-            />
-          </p>
-
-          <h1 class="title">{{ user.username }}</h1>
-
-          <p class="text-lead">{{ user.name }}</p>
-
-          <p class="text-justify">{{ user.bio || "No bio specified" }}</p>
-
-          <span class="online">{{ user.name }} is online</span>
-
-          <div class="stats">
-            <span>{{ userPostCount }} posts</span>
-            <span>{{ userThreadCount }} threads</span>
-          </div>
-
-          <hr />
-
-          <p v-if="user.website" class="text-large text-center">
-            <i class="fa fa-globe"></i>
-            <a :href="user.website">{{ user.website }}</a>
-          </p>
-        </div>
-
+       <ProfileCard :user="user"/>
+       <ProfileCardEditor :user="user"/>
         <p class="text-xsmall text-faded text-center">
           Member since june 2003, last visited 4 hours ago
         </p>
@@ -51,7 +23,7 @@
 
         <hr />
 
-        <PostList :posts="userposts" />
+        <PostList :posts="user.posts" />
       </div>
     </div>
   </div>
@@ -62,26 +34,13 @@
 <script>
 import { mapGetters } from "vuex";
  import PostList from "../components/PostList.vue";
+import ProfileCard from "../components/ProfileCard.vue";
+import ProfileCardEditor from "../components/ProfileCardEditor.vue"
 
 export default {
-   components: { PostList },
+   components: { PostList, ProfileCard,ProfileCardEditor },
   computed: {
     ...mapGetters({ user: "authUser" }),
-    userposts() {
-      //returns and array of posts of the current user that are displayed in the postlist component
-      return this.$store.state.posts.filter((post) => post.userId === this.user.id);
-    },
-    userPostCount() {
-      return this.userposts.length;
-    },
-    userThreads() {
-      return this.$store.state.threads.filter(
-        (thread) => thread.userId === this.user.id
-      );
-    },
-    userThreadCount() {
-      return this.userThreads.length;
-    },
   },
 };
 </script>
