@@ -2,15 +2,22 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/pages/Home.vue";
 import ThreadShow from "@/pages/ThreadShow.vue";
 import NotFound from "@/pages/NotFound.vue";
-import Category from "@/pages/Category.vue"
+import Category from "@/pages/Category.vue";
 import Forum from "../pages/Forum.vue";
 import dataSource from "@/data.json";
-import Profile from '../pages/Profile.vue'
+import Profile from "../pages/Profile.vue";
 
 //defining routes
 const routes = [
   { path: "/", name: "Home", component: Home },
   { path: "/myprofile", name: "Profile", component: Profile },
+  {
+    path: "/myprofile/edit",
+    name: "ProfileEdit",
+    component: Profile,
+    //when active, will set the profile page edit prop to true
+    props: {edit:true}
+  },
   {
     path: "/thread/:id",
     name: "ThreadShow",
@@ -38,10 +45,10 @@ const routes = [
     },
   },
   {
-    path:"/category/:id",
-    name:"Category",
-    component:Category,
-    props: true
+    path: "/category/:id",
+    name: "Category",
+    component: Category,
+    props: true,
   },
   {
     path: "/forum/:id",

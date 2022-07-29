@@ -27,15 +27,18 @@
       <i class="fa fa-globe"></i>
       <a :href="user.website">{{ user.website }}</a>
     </p>
+    <div class="text-center">
+    <router-link class="btn-green btn-small" :to="{name:'ProfileEdit'}">Edit Profile</router-link>
+    </div>
   </div>
 </template>
 <script>
 export default {
- props:{
-    user:{
-        required: true,
-        type: Object
-    }
- }
+  props: {
+    user: {
+      required: true,
+      type: Object,
+    },
+  },
 };
 </script>

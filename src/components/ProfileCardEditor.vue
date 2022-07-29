@@ -32,7 +32,7 @@
         <textarea
           class="form-input"
           id="user_bio"
-           v-model="activeUser.bio"
+          v-model="activeUser.bio"
           placeholder="Write a few words about yourself."
         ></textarea>
       </div>
@@ -48,7 +48,7 @@
         <label class="form-label" for="user_website">Website</label>
         <input
           autocomplete="off"
-           v-model="activeUser.website"
+          v-model="activeUser.website"
           class="form-input"
           id="user_website"
         />
@@ -56,16 +56,26 @@
 
       <div class="form-group">
         <label class="form-label" for="user_email">Email</label>
-        <input autocomplete="off" class="form-input"  v-model="activeUser.email" id="user_email" />
+        <input
+          autocomplete="off"
+          class="form-input"
+          v-model="activeUser.email"
+          id="user_email"
+        />
       </div>
 
       <div class="form-group">
         <label class="form-label" for="user_location">Location</label>
-        <input autocomplete="off"  v-model="activeUser.location" class="form-input" id="user_location" />
+        <input
+          autocomplete="off"
+          v-model="activeUser.location"
+          class="form-input"
+          id="user_location"
+        />
       </div>
 
       <div class="btn-group space-between">
-        <button class="btn-ghost">Cancel</button>
+        <button class="btn-ghost" @click="cancel">Cancel</button>
         <button type="submit" class="btn-blue">Save</button>
       </div>
     </form>
@@ -73,22 +83,25 @@
 </template>
 <script>
 export default {
- props:{
-    user:{
-        required: true,
-        type: Object
-    }
- },
+  props: { 
+    user: {
+      required: true,
+      type: Object,
+    },
+  },
   data() {
     return {
       activeUser: { ...this.user },
     };
   },
-  methods: { 
+  methods: {
     save() {
-      this.$store.dispatch('updateUser',{...this.activeUser})
-   
+      this.$store.dispatch("updateUser", { ...this.activeUser });
+      this.$router.push({ name: "Profile" });
     },
+    cancel(){
+         this.$router.push({ name: "Profile" });
+    }
   },
 };
 </script>
