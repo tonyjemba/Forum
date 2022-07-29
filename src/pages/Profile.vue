@@ -56,25 +56,27 @@
     </div>
   </div>
  
+
 </template>
 
 <script>
-import PostList from "../components/PostList.vue";
 import { mapGetters } from "vuex";
+ import PostList from "../components/PostList.vue";
+
 export default {
-  components: { PostList },
+   components: { PostList },
   computed: {
     ...mapGetters({ user: "authUser" }),
     userposts() {
       //returns and array of posts of the current user that are displayed in the postlist component
-      return this.$store.posts.filter((post) => post.userId === "VXjpr2WHa8Ux4Bnggym8QFLdv5C3");
+      return this.$store.state.posts.filter((post) => post.userId === this.user.id);
     },
     userPostCount() {
       return this.userposts.length;
     },
     userThreads() {
-      return this.$store.threads.filter(
-        (thread) => thread.userId === "VXjpr2WHa8Ux4Bnggym8QFLdv5C3"
+      return this.$store.state.threads.filter(
+        (thread) => thread.userId === this.user.id
       );
     },
     userThreadCount() {
