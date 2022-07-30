@@ -9,14 +9,19 @@ import Profile from "../pages/Profile.vue";
 
 //defining routes
 const routes = [
-  { path: "/", name: "Home", component: Home },
-  { path: "/myprofile", name: "Profile", component: Profile },
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+    
+  },
+  { path: "/myprofile", name: "Profile", component: Profile,meta: { toTop: true, smoothScroll: true }, },
   {
     path: "/myprofile/edit",
     name: "ProfileEdit",
     component: Profile,
     //when active, will set the profile page edit prop to true
-    props: {edit:true}
+    props: { edit: true },
   },
   {
     path: "/thread/:id",
@@ -67,4 +72,16 @@ export default createRouter({
   //  Provide the history implementation to use.
   history: createWebHistory(),
   routes, // short for `routes: routes`
+  scrollBehavior(to) {
+    if (to.meta.toTop && to.meta.smoothScroll) {
+      //if the route has those meta properties defined it will smoth scroll to top after 0.3sec
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({ top: 0, behavior: "smooth"  })
+        }, 300)
+      })
+  
+    }
+    return null;
+  },
 });
