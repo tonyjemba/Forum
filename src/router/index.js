@@ -6,6 +6,7 @@ import Category from "@/pages/Category.vue";
 import Forum from "../pages/Forum.vue";
 import dataSource from "@/data.json";
 import Profile from "../pages/Profile.vue";
+import ThreadCreate from "../pages/ThreadCreate.vue"
 
 //defining routes
 const routes = [
@@ -48,6 +49,12 @@ const routes = [
         });
       }
     },
+  },
+  {
+    path:'/form/:forumId/thread/create',
+    name:'ThreadCreate',
+    component: ThreadCreate,
+    props:true
   },
   {
     path: "/category/:id",
