@@ -30,8 +30,8 @@ export default {
       
       const post = {
         text: this.formText,
-        publishedAt: Math.floor(Date.now() / 1000),
-        userId: "ALXhxjwgY9PinwNGHpfai6OWyDu2",
+        
+        
       };
       this.$emit("save-post", { post });
       this.formText = "";

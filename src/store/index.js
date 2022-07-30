@@ -31,6 +31,8 @@ export default createStore({
     createPost(context, post) {
       //setting post.id explicitly(will be automated by database)
       post.id = "dummy" + Math.random();
+      post.userId = context.state.authId;
+      post.publishedAt= Math.floor(Date.now() / 1000),
       context.commit("setPost", { post });
       context.commit("appendPostToThread", {
         postId: post.id,
