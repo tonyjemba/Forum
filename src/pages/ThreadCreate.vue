@@ -24,21 +24,15 @@ export default {
         return this.$store.state.forums.find(forum=>forum.id === this.forumId)
     }
   },
-  data() {
-    return {
-      title: "",
-      text: "",
-    };
-  },
   methods: {
-    async save() {
+    async save({title, text}) {
 //createThread is an async action that returns the thread, we await the thread to be returned so 
 //that we can use it in the  router line below
 
         const thread = await this.$store.dispatch('createThread', {
             forumId: this.forum.id,
-            title: this.title,
-            text: this.text
+            title,
+            text
         });
 
         this.$router.push({name:'ThreadShow', params:{id: thread.id}})
