@@ -1,19 +1,19 @@
 <template>
   <h1 class="push-top">Welcome to the Forum</h1>
- <forum-category-list :categories ="categories"/>
+  <forum-category-list :categories="categories" />
 </template>
 <script>
 import ForumCategoryList from "../components/ForumCategoryList.vue";
 
 export default {
   components: {
-    ForumCategoryList
+    ForumCategoryList,
   },
-  computed:{
-    categories(){
+  computed: {
+    categories() {
       return this.$store.state.categories;
-    }
-  }
+    },
+  },
 };
 </script>
 

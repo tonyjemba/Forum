@@ -83,7 +83,7 @@
 </template>
 <script>
 export default {
-  props: { 
+  props: {
     user: {
       required: true,
       type: Object,
@@ -99,9 +99,9 @@ export default {
       this.$store.dispatch("updateUser", { ...this.activeUser });
       this.$router.push({ name: "Profile" });
     },
-    cancel(){
-         this.$router.push({ name: "Profile" });
-    }
+    cancel() {
+      this.$router.push({ name: "Profile" });
+    },
   },
 };
 </script>

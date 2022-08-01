@@ -1,5 +1,5 @@
 <template>
-<h1>{{ category.name }}</h1>
+  <h1>{{ category.name }}</h1>
   <forum-list
     :forums="getForumsForCategory(category)"
     :categoryName="category.name"
@@ -19,12 +19,16 @@ export default {
   },
   computed: {
     category() {
-      return this.$store.state.categories.find((category) => category.id === this.id);
+      return this.$store.state.categories.find(
+        (category) => category.id === this.id
+      );
     },
   },
   methods: {
     getForumsForCategory(category) {
-      return this.$store.state.forums.filter((forum) => forum.categoryId === category.id);
+      return this.$store.state.forums.filter(
+        (forum) => forum.categoryId === category.id
+      );
     },
   },
 };

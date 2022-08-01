@@ -25,7 +25,9 @@
       </div>
 
       <div class="btn-group">
-        <button class="btn btn-ghost" @click.prevent="$emit(cancel)">Cancel</button>
+        <button class="btn btn-ghost" @click.prevent="$emit(cancel)">
+          Cancel
+        </button>
         <button class="btn btn-blue" type="submit" name="Publish">
           Publish
         </button>
