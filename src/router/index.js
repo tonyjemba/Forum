@@ -6,7 +6,8 @@ import Category from "@/pages/Category.vue";
 import Forum from "../pages/Forum.vue";
 import dataSource from "@/data.json";
 import Profile from "../pages/Profile.vue";
-import ThreadCreate from "../pages/ThreadCreate.vue"
+import ThreadCreate from "../pages/ThreadCreate.vue";
+import ThreadEdit from "../pages/ThreadEdit";
 
 //defining routes
 const routes = [
@@ -14,9 +15,13 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-    
   },
-  { path: "/myprofile", name: "Profile", component: Profile,meta: { toTop: true, smoothScroll: true }, },
+  {
+    path: "/myprofile",
+    name: "Profile",
+    component: Profile,
+    meta: { toTop: true, smoothScroll: true },
+  },
   {
     path: "/myprofile/edit",
     name: "ProfileEdit",
@@ -51,10 +56,16 @@ const routes = [
     },
   },
   {
-    path:'/form/:forumId/thread/create',
-    name:'ThreadCreate',
+    path: "/forum/:forumId/thread/create",
+    name: "ThreadCreate",
     component: ThreadCreate,
-    props:true
+    props: true,
+  },
+  {
+    path: "/thread/:id/edit",
+    name: "ThreadEdit",
+    component: ThreadEdit,
+    props: true,
   },
   {
     path: "/category/:id",
@@ -84,10 +95,9 @@ export default createRouter({
       //if the route has those meta properties defined it will smoth scroll to top after 0.3sec
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve({ top: 0, behavior: "smooth"  })
-        }, 300)
-      })
-  
+          resolve({ top: 0, behavior: "smooth" });
+        }, 300);
+      });
     }
     return null;
   },

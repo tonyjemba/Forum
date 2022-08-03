@@ -3,6 +3,7 @@ import data from "@/data.json";
 
 export default createStore({
   state: { ...data, authId: "VXjpr2WHa8Ux4Bnggym8QFLdv5C3" },
+
   getters: {
     authUser: (state) => {
       const user = state.users.find((user) => user.id === state.authId);
@@ -27,6 +28,7 @@ export default createStore({
       };
     },
   },
+
   actions: {
     createPost(context, post) {
       //setting post.id explicitly(will be automated by database)
@@ -42,7 +44,20 @@ export default createStore({
     updateUser({ commit }, user) {
       commit("setUser", { userId: user.id, user });
     },
-   async createThread({ commit, state, dispatch }, { title, text, forumId }) {
+   async updateThread({ commit, state }, { title, text, id }) {
+      const thread = state.threads.find((thread) => thread.id === id);
+
+      const post = state.post.find((post) => post.id === thread.posts[0]);
+
+      const newThread = { ...thread, title };
+      const newPost = { ...post, text };
+
+      commit("setThread", { thread: newThread });
+      commit("setPost", { post: newPost });
+
+      return newThread
+    },
+    async createThread({ commit, state, dispatch }, { title, text, forumId }) {
       //setting post.id explicitly(will be automated by database)
       const id = "dummy" + Math.random();
       const userId = state.authId;
@@ -54,15 +69,30 @@ export default createStore({
       commit(" appendThreadToForum", { forumId, threadId: id });
       dispatch("createPost", { text, threadId: id });
 
-      return state.threads.find(thread=>thread.id === id)
+      return state.threads.find((thread) => thread.id === id);
     },
   },
+
   mutations: {
     setThread(state, { thread }) {
-      state.threads.push(thread);
+      //if thread already exists update
+      const index = state.threads.findIndex((t) => t.id === thread.id);
+      if (thread.id && index !== -1) {
+        state.threads[index] = thread;
+      } else {
+        //push it as new
+        state.threads.push(thread);
+      }
     },
     setPost(state, { post }) {
-      state.posts.push(post);
+      //if post already exists update
+      const index = state.posts.findIndex((p) => p.id === post.id);
+      if (post.id && index !== -1) {
+        state.posts[index] = post;
+      } else {
+        //push it as new
+        state.posts.push(post);
+      }
     },
     setUser(state, { userId, user }) {
       const userIndex = state.users.findIndex((user) => user.id === userId);
